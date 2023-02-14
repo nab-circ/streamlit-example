@@ -1,4 +1,4 @@
-id,Date,Remaining capacity (Ah),Overall capacity fade (%),Remaining round trip efficiency (%),Evolution of self-discharging rates (%)
+id,Date,Remaining capacity (Ah),Overall capacity fade (%),Remaining round trip efficiency (%),Discharge Rate (%)
 1,01-01-2020,112.6,0.132,89.996,0.877
 2,01-09-2020,112.58,0.186,89.928,1.391
 3,01-17-2020,112.56,0.401,89.892,1.453
