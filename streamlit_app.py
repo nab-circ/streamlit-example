@@ -23,7 +23,7 @@ st.bokeh_chart(p, use_container_width=True)
 sohdf_dis = pd.read_csv('soh_discharge_capacity.csv')
 source2 = ColumnDataSource(sohdf_dis)
 
-p2 = figure(title="Battery Capacity Fade", x_axis_label='Cycle', y_axis_label='Battery Capacity(Ah)', y_range=(20, 30), tools=['pan', 'wheel_zoom', "reset"], plot_width=400, plot_height=250)
+p2 = figure(title="Battery Capacity Fade", x_axis_label='Cycle', y_axis_label='Battery Capacity(Ah)', y_range=(20, 50), tools=['pan', 'wheel_zoom', "reset"], plot_width=400, plot_height=250)
 p2.x_range.bounds=(1,150)
 p2.y_range.bounds=(10,40)
 p2.xgrid.visible = False
