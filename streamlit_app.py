@@ -37,7 +37,7 @@ df = pd.read_csv("soh_master_params.csv", parse_dates=['Date'])
 
 def chartParam(cTitle, x_label, y_label):
     colSource = ColumnDataSource(df)
-    plot = figure(title=cTitle, x_axis_label=x_label, y_axis_label=y_label, y_range=(min(df[y_label])-10,max(df[y_label])+20), tools=['pan', 'wheel_zoom', "reset"], plot_width=400, plot_height=250)
+    plot = figure(title=cTitle, x_axis_type="datetime", x_axis_label=x_label, y_axis_label=y_label, y_range=(min(df[y_label])-10,max(df[y_label])+20), tools=['pan', 'wheel_zoom', "reset"], plot_width=400, plot_height=250)
     plot.xgrid.visible = False
     plot.line(x=x_label, y=y_label, line_width=2, source=colSource)
 
