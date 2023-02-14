@@ -20,6 +20,23 @@ p.toolbar.logo = None
 st.bokeh_chart(p, use_container_width=True)
 
 
+df = pd.read_csv("soh_master_params.csv", parse_dates=['Date'])
+
+def chartParam(cTitle, x_label, y_label):
+    colSource = ColumnDataSource(df)
+    plot = figure(title=cTitle, x_axis_type="datetime", x_axis_label=x_label, y_axis_label=y_label, y_range=(min(df[y_label])-10,max(df[y_label])+20), tools=['pan', 'wheel_zoom', "reset"], plot_width=400, plot_height=250)
+    plot.xgrid.visible = False
+    plot.line(x=x_label, y=y_label, line_width=2, source=colSource)
+
+    plot.toolbar.logo = None
+    st.bokeh_chart(plot, use_container_width=True)
+
+chartParam("Evolution of self-discharging rates", "Date", "Discharge Rate (%)")
+chartParam("Overall capacity fade", "Date", "Overall capacity fade (%)")
+chartParam("Remaining capacity", "Date", "Remaining capacity (Ah)")
+chartParam("Remaining round trip efficiency", "Date", "Remaining round trip efficiency (%)")
+
+
 sohdf_dis = pd.read_csv('soh_discharge_capacity.csv')
 source2 = ColumnDataSource(sohdf_dis)
 
@@ -32,22 +49,6 @@ p2.line(x='Cycle', y='Discharge Capacity (Ah)', line_width=2, source=source2)
 p2.toolbar.logo = None
 # p.toolbar_location = None
 st.bokeh_chart(p2, use_container_width=True)
-
-df = pd.read_csv("soh_master_params.csv", parse_dates=['Date'])
-
-def chartParam(cTitle, x_label, y_label):
-    colSource = ColumnDataSource(df)
-    plot = figure(title=cTitle, x_axis_type="datetime", x_axis_label=x_label, y_axis_label=y_label, y_range=(min(df[y_label])-10,max(df[y_label])+20), tools=['pan', 'wheel_zoom', "reset"], plot_width=400, plot_height=250)
-    plot.xgrid.visible = False
-    plot.line(x=x_label, y=y_label, line_width=2, source=colSource)
-
-    plot.toolbar.logo = None
-    st.bokeh_chart(plot, use_container_width=True)
-
-chartParam("Remaining capacity", "Date", "Remaining capacity (Ah)")
-chartParam("Overall capacity fade", "Date", "Overall capacity fade (%)")
-chartParam("Remaining round trip efficiency", "Date", "Remaining round trip efficiency (%)")
-chartParam("Evolution of self-discharging rates", "Date", "Discharge Rate (%)")
 
 hide_menu_style = """
         <style>
